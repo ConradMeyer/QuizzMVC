@@ -105,16 +105,32 @@ nav {
             color: whitesmoke;
             cursor: pointer;
         }
-
-.right {
+#right {
     background-color: green;
-    transition: background-color 1.5s ease-out;
+    /* transition: background-color 1.5s ease-out; */
 }
     
-.wrong {
+#wrong {
     background-color: red;
-    transition: background-color 1.5s ease-out;
+    /* transition: background-color 1.5s ease-out; */
 }
+
+#evaluar {
+    margin: 10px auto;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    color: whitesmoke;
+    border: none;
+    background-color: black;
+}
+    #evaluar:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+
 
 @media screen and ( max-width: 550px ) {
     .respuestas h3 {

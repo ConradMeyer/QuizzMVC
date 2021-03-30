@@ -3,6 +3,8 @@ const BTN = document.querySelector("#jugar")
 const RESET = document.querySelector("#reset")
 const INPUT = document.querySelector(".num")
 
+let counter = 0;
+
 function getQuestions() {
     const options = { 
       method: 'GET',
@@ -11,6 +13,7 @@ function getQuestions() {
     fetch("/user/read", options)
         .then(data => data.json())
         .then(res => res.map(el =>pintar(el)))
+		.then(()=> pintarBtn())
 		.catch(err => console.log(err))
 }
 
@@ -54,34 +57,58 @@ function pintar(datos) {
 	respuestas.appendChild(answD)
 
 	let totalAnsw = [answA, answB, answC, answD]
-	totalAnsw.forEach(el => el.addEventListener("click", ()=> el.setAttribute())
+
+	totalAnsw.map((el, i) => {
+			el.addEventListener("click", ()=> {
+				if (answA.className !== "clicked" && answB.className !== "clicked" && answC.className !== "clicked" && answD.className !== "clicked") {
+					evaluarRespuesta(datos, i, el)
+				}
+			})
+	})
 
 }
 
-function evaluarRespuesta(respuesta, respuestaCorrecta, obj) {
+function evaluarRespuesta(datos, i, obj) {
     const h3 = obj;
 
-    if (respuesta == respuestaCorrecta) {
-        h3.classList.add("right")
-        
-        setTimeout( function(){
-            let caja1 = document.querySelector(".cajaPreguntas")
-            let caja2 = document.querySelector(".cajaRespuestas")
-            caja1.remove()
-            caja2.remove()
-            caja2.classList.remove("cajaRespuestas")
-            pintarPregunta(++i)}, 700)
+    if (datos.respuestaCorrecta == i) {
+        h3.setAttribute("id", "right")
+		h3.classList.add("clicked")
+		counter++
     } else {
-        h3.classList.add("wrong")
-        
-        setTimeout( function(){
-            let wrong = document.querySelector(".wrong")
-            wrong.classList.remove("wrong")
-        }, 700)
+        h3.setAttribute("id", "wrong")
+		h3.classList.add("clicked")
     }
+}
+
+function pintarBtn() {
+	let btn = document.createElement("div");
+	let cont = document.createTextNode("Ver mi puntuación")
+	btn.setAttribute("id", "evaluar")
+	btn.appendChild(cont)
+	btn.addEventListener("click", () => contar())
+	QUIZZ.appendChild(btn)
+}
+
+function contar(){
+	let numP = document.querySelectorAll(".resultado").length
+	document.querySelectorAll(".resultado").forEach(el => el.remove())
+	document.querySelector("#evaluar").remove()
+	let caja = document.createElement("div")
+	caja.setAttribute("class", "resultado")
+	let cont = document.createTextNode(`Tu puntuación es de ${counter} sobre ${numP}`)
+	let h3 = document.createElement("h3")
+	h3.appendChild(cont)
+	caja.appendChild(h3)
+	QUIZZ.appendChild(caja)
 
 }
 
-BTN.addEventListener("click", ()=> getQuestions())
+BTN.addEventListener("click",  ()=> {
+	if (BTN.className !== "btn clicked") {
+		getQuestions()
+		BTN.className += " clicked"
+	}
+})
 
 RESET.addEventListener("click", ()=> window.location.reload())

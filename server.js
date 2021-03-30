@@ -242,7 +242,7 @@ server.put('/teacher/logout', (req, res) => {
                         .updateOne({email: decode.email}, {$set: {secret: randomstring.generate()}}, (err, result) => {
                             try {
                                 res.status(200).json({
-                                    data: "Logout de puits",
+                                    data: "Logout correctly",
                                     ok: true
                                 })
                                 db.close();

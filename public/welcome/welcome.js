@@ -211,7 +211,7 @@ function editar(el) {
             alert("Debes añadir todos los campos")
         }
         else {
-            editarQuest(el.preguntas, resp1.value, resp2.value, resp3.value, resp4.value, select.value)
+            editarQuest(el.preguntas, resp1.value, resp2.value, resp3.value, resp4.value, Number(select.value))
         }
     })
     btn.appendChild(btnT)
@@ -249,7 +249,7 @@ function crearQuest() {
         body: JSON.stringify({
             pregunta: quest.value,
             respuestas: [resp1.value, resp2.value, resp3.value, resp4.value],
-            respuestaCorrecta: respC
+            respuestaCorrecta: respC.value
         }),
         headers:{'Content-Type': 'application/json'}
       }

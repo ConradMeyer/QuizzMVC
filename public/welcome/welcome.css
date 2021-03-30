@@ -47,6 +47,7 @@ div.main {
     width: 100%;
     max-width: 1000px;
     margin: 10px auto;
+    padding: 10px;
     background-color: whitesmoke;
     border-radius: 15px;
     box-shadow: 2px 2px 40px -2px black;
@@ -72,13 +73,12 @@ div.main {
         margin: 15px auto;
     }
     .main h3 {
-        /* text-align: center; */
         margin: 15px;
         width: 75%;
     }
     .main div {
         width: 100%;
-        display: flex;
+        /* display: flex; */
         flex-direction: row;
         align-items: center;
     }
