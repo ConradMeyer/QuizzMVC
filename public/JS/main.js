@@ -2,8 +2,15 @@ const QUIZZ = document.querySelector(".quizz")
 const BTN = document.querySelector("#jugar")
 const RESET = document.querySelector("#reset")
 const INPUT = document.querySelector(".num")
+const ADMIN = document.querySelector(".admin")
 
 let counter = 0;
+
+ADMIN.addEventListener("click", ()=> {
+	fetch('/login')
+		.then(res => window.location.href = res.url)
+		.catch(err => console.log(err))
+})
 
 function getQuestions() {
     const options = { 

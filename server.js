@@ -29,6 +29,15 @@ server.listen(listenPort,
 
 // SERVICIO DE ESTATICOS
 
+let fileOptions = {
+    root: __dirname + '/public'
+}
+server.get('/login', (req, res)=> {
+    res.sendFile('/login/login.html', fileOptions)
+})
+server.get('/', (req, res)=> {
+    res.sendFile('index.html', fileOptions)
+})
 
 // VALIDATION
 const validarEmail = mail => (/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(mail));

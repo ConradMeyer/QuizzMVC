@@ -14,6 +14,13 @@ body {
     align-items: center;
 }
 
+span {
+    color: blue;
+}
+    span:hover {
+        cursor: pointer;
+    }
+
 .form {
     width: 90%;
     max-width: 500px;
@@ -58,7 +65,7 @@ body {
         padding: 8px 20px;
         margin: 15px;
         border-radius: 15px;
-        color: black;
+        color: white;
         font-weight: bolder;
         box-shadow: 2px 5px 30px -7px black;
         font-size: 15px;

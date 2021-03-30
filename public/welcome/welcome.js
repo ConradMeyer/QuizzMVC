@@ -76,6 +76,11 @@ function borrar() {
 }
 
 function crear() {
+    let h2 = document.createElement("h2")
+    let text = document.createTextNode("Crear una nueva pregunta")
+    h2.appendChild(text)
+    CAJA.appendChild(h2)
+
     let quest = document.createElement("input")
     quest.setAttribute("placeholder", "Escribe aquí la nueva pregunta")
     quest.setAttribute("id", "quest")
@@ -152,7 +157,12 @@ function crear() {
 }
 
 function editar(el) {
-    let quest = document.createElement("h3")
+    let h2 = document.createElement("h2")
+    let text = document.createTextNode("Editar la siguiente pregunta")
+    h2.appendChild(text)
+    CAJA.appendChild(h2)
+
+    let quest = document.createElement("h2")
     let cont = document.createTextNode(el.preguntas)
     quest.appendChild(cont)
     CAJA.appendChild(quest)
@@ -233,6 +243,7 @@ function borrarDetalle() {
     document.querySelector("select").remove();
     document.querySelector(".crear").remove();
     document.querySelector(".atras").remove();
+    document.querySelectorAll("h2").forEach(el => el.remove())
     read()
 }
 

@@ -1,9 +1,14 @@
 const EMAIL = document.querySelector("#email");
 const PASS = document.querySelector("#pass");
 const BTN = document.querySelector("#signup");
-const LOGIN = document.querySelector("#login")
+const PLAY = document.querySelector("#login")
 
 BTN.addEventListener("click", () => signin());
+
+PLAY.addEventListener("click", ()=> {
+    fetch('/')
+        .then(res => window.location.href = res.url)
+})
 
 function signin() {
     const options = { 

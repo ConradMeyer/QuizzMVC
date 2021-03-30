@@ -34,12 +34,13 @@ nav {
 
 .header {
     background-color: rebeccapurple;
-    padding: 20px 0;
+    padding: 10px 0;
 }
     .header h1 {
         text-align: center;
-        /* text-decoration: underline; */
+        color: whitesmoke;
         font-size: 50px;
+        margin-bottom: 25px;
     }
     .header h2 {
         margin: 20px auto;
@@ -117,9 +118,10 @@ nav {
 
 #evaluar {
     margin: 10px auto;
-    width: 150px;
+    width: 200px;
     text-align: center;
-    font-weight: bold;
+    font-size: 15px;
+    font-weight: bolder;
     padding: 10px;
     border-radius: 10px;
     color: whitesmoke;
