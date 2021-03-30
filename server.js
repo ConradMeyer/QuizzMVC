@@ -27,6 +27,9 @@ server.listen(listenPort,
     () => console.log(`Server listening on ${listenPort}`)
 );
 
+// SERVICIO DE ESTATICOS
+
+
 // VALIDATION
 const validarEmail = mail => (/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(mail));
 

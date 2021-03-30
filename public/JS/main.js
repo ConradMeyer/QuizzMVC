@@ -12,7 +12,7 @@ function getQuestions() {
     }
     fetch("/user/read", options)
         .then(data => data.json())
-        .then(res => res.map(el =>pintar(el)))
+        .then(res => res.sort(()=> Math.random() - 0.5).map(el => pintar(el)))
 		.then(()=> pintarBtn())
 		.catch(err => console.log(err))
 }
