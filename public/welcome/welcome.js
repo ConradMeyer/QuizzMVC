@@ -164,4 +164,30 @@ function crearQuest() {
           .then(data => console.log(data))
 }
 
+function edit(el) {
+    const options = { 
+      method: 'PUT',
+      body: JSON.stringify({pregunta: el.pregunta}),
+      headers:{'Content-Type': 'application/json'}
+    }
+    fetch("/cambiaUnaPalabra", options)
+    .then(response => response.json())
+    .then(data => {
+
+        data.map((el) => {
+            printData(el)})
+        })
+}
+
+function deleteWord(el) {
+const options = { 
+    method: 'DELETE',
+    body: JSON.stringify({pregunta: el.pregunta}),
+    headers:{'Content-Type': 'application/json'}
+}
+fetch("/borraUnaPalabra", options)
+.then(response => response.json())
+.then(data => console.log(data))
+}
+
 read();
