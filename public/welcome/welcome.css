@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    background-color: rebeccapurple;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+    nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bolder;
+    }
+    nav .logout {
+        background-color: whitesmoke;
+        margin: 15px;
+        padding: 7px 14px;
+        border-radius: 15px;
+        font-weight: bolder;
+        box-shadow: 2px 2px 40px -2px black;
+    }
+        .logout:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    width: 100%;
+    /* background-color: whitesmoke; */
+}
+
+div.main {
+    width: 80%;
+    margin: 40px auto;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    box-shadow: 2px 2px 40px -2px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+    div.main .private {
+        background-color: black;
+        width: 100%;
+        color: white;
+        font-weight: bold;
+        border-radius: 15px 15px 0 0;
+        text-align: center;
+        padding: 10px 20px;
+    }
+        .private:hover {
+            cursor: pointer;
+        }
+    .main h2 {
+        text-align: center;
+        margin: 15px auto;
+    }
+    .main h3 {
+        /* text-align: center; */
+        margin: 15px;
+        width: 75%;
+    }
+    .main div {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .main button {
+        background-color: black;
+        color: white;
+        font-weight: bolder;
+        border-radius: 15px;
+        width: 18%;
+        min-width: 60px;
+        padding: 5px;
+        height: 30px;
+        margin: 5px;
+        border: none;
+        box-shadow: 2px 2px 10px 2px black;
+    }
+        .main button:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+input {
+    margin: 15px;
+    padding: 7px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 5px 30px -5px black;
+    width: 90%;
+}
+
+select {
+    margin: 15px ;
+    padding: 7px;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 2px 5px 30px -5px black;
+    width: 50%;
+}
+
+.main>div {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.atras, .crear {
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    width: 50%;
+    margin: 15px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 2px 5px 30px -5px black;
+}
+    .atras:hover, .crear:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+    }

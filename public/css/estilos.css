@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: monospace;
+    background-color: whitesmoke;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: rebeccapurple;
+}
+    nav a {
+        text-decoration: none;
+        color: black;
+        font-weight: bolder;
+    }
+    nav .admin {
+        background-color: whitesmoke;
+        margin: 15px;
+        padding: 7px 14px;
+        border-radius: 15px;
+        box-shadow: 2px 2px 40px -2px black;
+    }
+        .admin:hover {
+            cursor: pointer;
+            transform: scale(1.05);
+        }
+
+
+.header {
+    background-color: rebeccapurple;
+    padding: 20px 0;
+}
+    .header h1 {
+        text-align: center;
+        /* text-decoration: underline; */
+        font-size: 50px;
+    }
+    .header h2 {
+        margin: 20px auto;
+        width: 90%;
+        text-align: center;
+        max-width: 900px;
+        background-color: rgb(209, 208, 208);
+    }
+    .form {
+        margin: 0px auto;
+        text-align: center;
+    }
+        .form input {
+            margin: 10px;
+            padding: 5px;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .form button {
+            margin: 10px;
+            width: 100px;
+            text-align: center;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 10px;
+            color: whitesmoke;
+            border: none;
+            background-color: black;
+        }
+            .form button:hover {
+                cursor: pointer;
+                transform: scale(1.05)
+            }
+
+.resultado {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(209, 208, 208);
+}
+    .pregunta {
+        margin: 20px auto;
+        text-align: center;
+    }
+        .pregunta h2 {
+            margin: 20px auto;
+        }
+    .respuestas h3 {
+        margin: 20px;
+        width: 400px;
+        text-align: center;
+        border: 1px black solid;
+        padding: 10px;
+        /* transition: background-color 1.5s ease-out; */
+    }
+        h3:hover {
+            background-color: black;
+            color: whitesmoke;
+            cursor: pointer;
+        }
+
+.right {
+    background-color: green;
+    transition: background-color 1.5s ease-out;
+}
+    
+.wrong {
+    background-color: red;
+    transition: background-color 1.5s ease-out;
+}
+
+@media screen and ( max-width: 550px ) {
+    .respuestas h3 {
+        margin: 20px;
+        width: 200px; 
+    }
+
+    h1 {
+        font-size: 40px ;
+    }
+}
