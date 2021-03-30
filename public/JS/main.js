@@ -14,7 +14,6 @@ function getQuestions() {
 		.catch(err => console.log(err))
 }
 
-
 function pintar(datos) {
 	const caja = document.createElement("div")
 	caja.setAttribute("class", "resultado")
@@ -54,8 +53,8 @@ function pintar(datos) {
 	answD.appendChild(answTextD)
 	respuestas.appendChild(answD)
 
-	// let totalAnsw = [answA, answB, answC, answD]
-	// totalAnsw.forEach(el => el.addEventListener("click", ()=> evaluarRespuesta(el, datos)))
+	let totalAnsw = [answA, answB, answC, answD]
+	totalAnsw.forEach(el => el.addEventListener("click", ()=> el.setAttribute())
 
 }
 

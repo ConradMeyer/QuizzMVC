@@ -26,7 +26,7 @@ nav {
     nav .logout {
         background-color: whitesmoke;
         margin: 15px;
-        padding: 7px 14px;
+        padding: 9px 18px;
         border-radius: 15px;
         font-weight: bolder;
         box-shadow: 2px 2px 40px -2px black;
@@ -40,12 +40,13 @@ h1 {
     text-align: center;
     font-size: 40px;
     width: 100%;
-    /* background-color: whitesmoke; */
+    color: whitesmoke;
 }
 
 div.main {
-    width: 80%;
-    margin: 40px auto;
+    width: 100%;
+    max-width: 1000px;
+    margin: 10px auto;
     background-color: whitesmoke;
     border-radius: 15px;
     box-shadow: 2px 2px 40px -2px black;
@@ -53,12 +54,13 @@ div.main {
     flex-direction: column;
     align-items: center;
 }
-    div.main .private {
+    .private {
         background-color: black;
-        width: 100%;
+        margin: 20px auto;
+        width: 200px;
         color: white;
-        font-weight: bold;
-        border-radius: 15px 15px 0 0;
+        font-weight: bolder;
+        border-radius: 15px;
         text-align: center;
         padding: 10px 20px;
     }
@@ -87,6 +89,7 @@ div.main {
         font-weight: bolder;
         border-radius: 15px;
         width: 18%;
+        max-width: 100px;
         min-width: 60px;
         padding: 5px;
         height: 30px;
@@ -117,7 +120,7 @@ select {
 }
 
 .main>div {
-    width: 90%;
+    width: 95%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -127,7 +130,7 @@ select {
     background-color: black;
     color: white;
     border-radius: 15px;
-    width: 50%;
+    width: 100px;
     margin: 15px;
     padding: 10px;
     text-align: center;

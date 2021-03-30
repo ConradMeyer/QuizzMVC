@@ -160,22 +160,96 @@ server.post('/teacher/create', (req, res) => {
     })
 })
 
+// DELETE
+server.delete('/teacher/delete', (req, res) => {
+    const delet = {
+        preguntas: req.body.pregunta,
+    }
+
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+        try {
+            db.db("quizz")
+                .collection("quest")
+                .deleteOne(delet, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        res.status(200).json({
+                            status: 200,
+                            data: "Question deleted",
+                            ok: true
+                        })
+                    }
+                })
+            }
+            catch {
+                res.status(401).json({
+                    status:401,
+                    data: "Error",
+                    ok: false
+                })
+            } 
+
+    })
+})
+
+// EDIT
+server.put('/teacher/edit', (req, res) => {
+    const edit = {
+        preguntas: req.body.preguntas,
+        respuestas: [req.body.respuestas[0], req.body.respuestas[1], req.body.respuestas[2], req.body.respuestas[3]],
+        respuestaCorrecta: req.body.respuestaCorrecta
+    }
+
+    MongoClient.connect(URL, optionsMongo, (err, db) => {
+        try {
+            db.db("quizz")
+                .collection("quest")
+                .updateOne({preguntas: req.body.preguntas}, {$set: edit}, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        res.status(200).json({
+                            status: 200,
+                            data: "Question edited",
+                            ok: true
+                        })
+                    }
+                })
+            }
+            catch {
+                res.status(401).json({
+                    status:401,
+                    data: "Error",
+                    ok: false
+                })
+            } 
+
+    })
+})
+
 // LOGOUT (Cargarse el puto token)
-server.get('/user/logout', (req, res) => {
+server.put('/teacher/logout', (req, res) => {
     try {
-        let decode = jwt.decode(req.headers.authentication);
+        let decode = jwt.decode(req.headers.authorization);
         if (decode.email){ 
             MongoClient.connect(URL, (err, db)=> {
                 try {
-                    db.db("users")
-                        .collection("Users")
+                    db.db("quizz")
+                        .collection("teacher")
                         .updateOne({email: decode.email}, {$set: {secret: randomstring.generate()}}, (err, result) => {
                             try {
-                                res.send("Logged out correctly")
+                                res.status(200).json({
+                                    data: "Logout de puits",
+                                    ok: true
+                                })
                                 db.close();
                             }
                             catch {
                                 res.status(401).json({
+                                    status:401,
                                     data: "Algo va mal... ",
                                     ok: false,
                                 })
@@ -185,6 +259,7 @@ server.get('/user/logout', (req, res) => {
                 }
                 catch {
                     res.status(401).json({
+                        status:401,
                         data: "Algo va mal... No conecta",
                         ok: false,
                     })
@@ -194,6 +269,7 @@ server.get('/user/logout', (req, res) => {
     }
     catch {
         res.status(401).json({
+            status:401,
             data: "¡No tienes token chaval!",
             ok: false,
         })
