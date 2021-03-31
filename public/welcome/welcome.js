@@ -14,7 +14,7 @@ LOGOUT.addEventListener("click", () => {
     .then(data => {
         console.log(data)
         alert(data.data)
-        window.location.href = "http://localhost:8080/login/login.html"
+        window.location.href = data.url
     })
     .catch(err => console.log(err))
 })

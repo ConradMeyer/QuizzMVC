@@ -6,7 +6,7 @@ const PLAY = document.querySelector("#login")
 BTN.addEventListener("click", () => signin());
 
 PLAY.addEventListener("click", ()=> {
-    fetch('/')
+    fetch('/play')
         .then(res => window.location.href = res.url)
 })
 

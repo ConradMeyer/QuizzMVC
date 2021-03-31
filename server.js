@@ -35,9 +35,12 @@ let fileOptions = {
 server.get('/login', (req, res)=> {
     res.sendFile('/login/login.html', fileOptions)
 })
-server.get('/', (req, res)=> {
+server.get('/play', (req, res)=> {
     res.sendFile('index.html', fileOptions)
 })
+// server.get('/admin', (req, res)=> {
+//     res.sendFile('/welcome/welcome.html', fileOptions)
+// })
 
 // VALIDATION
 const validarEmail = mail => (/^\w+([\.-]?\w+)*@(?:|hotmail|outlook|yahoo|live|gmail)\.(?:|com|es)+$/.test(mail));
@@ -69,6 +72,7 @@ server.post('/user/login', (req, res) => {
                             res.status(200).json({
                                 status: 200,
                                 data: token,
+                                url: "/admin",
                                 ok: true,
                             })
                             db.close();
@@ -290,6 +294,7 @@ server.put('/teacher/logout', (req, res) => {
                             try {
                                 res.status(200).json({
                                     data: "Logout correctly",
+                                    url: "/login",
                                     ok: true
                                 })
                                 db.close();
