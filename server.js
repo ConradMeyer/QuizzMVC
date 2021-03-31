@@ -97,7 +97,7 @@ server.get('/teacher/read', (req, res) => {
     try {
         let decode = jwt.decode(req.headers.authentication);
         if (decode.email){
-            MongoClient.connect(URL, (err, db)=> {
+            MongoClient.connect(URL, optionsMongo, (err, db)=> {
                     db.db("quizz")
                         .collection("teacher")
                         .findOne({email: decode.email}, (err, result) => {
@@ -105,13 +105,12 @@ server.get('/teacher/read', (req, res) => {
                                 let verify = jwt.verify(req.headers.authentication, result.secret)
                                 if (verify) {
                                     try {
-                                        MongoClient.connect(URL, (err, db)=> {
+                                        MongoClient.connect(URL, optionsMongo, (err, db)=> {
                                                 db.db("quizz")
                                                     .collection("quest")
                                                     .find({}).toArray( (err, result) => {
                                                         if (err) {
                                                             console.log(err);
-                                                            console.log("ERROR");
                                                         }
                                                         else {
                                                             res.status(200).json({
@@ -153,30 +152,22 @@ server.get('/teacher/read', (req, res) => {
 // LEER USUARIO
 server.get('/user/read', (req, res) => {
     try {
-        MongoClient.connect(URL, (err, db)=> {
-            try {
+        MongoClient.connect(URL, optionsMongo, (err, db)=> {
                 db.db("quizz")
                     .collection("quest")
                     .find({}).toArray( (err, result) => {
                         if (err) throw err;
                         res.send(result);
                         db.close();
-                    })
-            }
-            catch {
-                console.log("Error 1");
-            }
+                    })            
         })
     } catch {
         res.send("No se conecta")
-        console.log("no se conecta");
     }
 })
 
 // CREAR PREGUNTA
 server.post('/teacher/create', (req, res) => {
-    console.log(req.body);
-
     const newQuest = {
         preguntas: req.body.pregunta,
         respuestas: req.body.respuestas,
@@ -231,13 +222,14 @@ server.delete('/teacher/delete', (req, res) => {
                             data: "Question deleted",
                             ok: true
                         })
+                        db.close();
                     }
                 })
             }
             catch {
                 res.status(401).json({
                     status:401,
-                    data: "Error",
+                    data: "Error al borrar",
                     ok: false
                 })
             } 
@@ -267,13 +259,14 @@ server.put('/teacher/edit', (req, res) => {
                             data: "Question edited",
                             ok: true
                         })
+                        db.close()
                     }
                 })
             }
             catch {
                 res.status(401).json({
                     status:401,
-                    data: "Error",
+                    data: "Error al editar",
                     ok: false
                 })
             } 
@@ -286,7 +279,7 @@ server.put('/teacher/logout', (req, res) => {
     try {
         let decode = jwt.decode(req.headers.authorization);
         if (decode.email){ 
-            MongoClient.connect(URL, (err, db)=> {
+            MongoClient.connect(URL, optionsMongo, (err, db)=> {
                 try {
                     db.db("quizz")
                         .collection("teacher")
@@ -305,7 +298,6 @@ server.put('/teacher/logout', (req, res) => {
                                     data: "Algo va mal... ",
                                     ok: false,
                                 })
-                                console.log(err);
                             }
                         })
                 }
