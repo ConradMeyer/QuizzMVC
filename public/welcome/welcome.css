@@ -123,6 +123,9 @@ input {
     box-shadow: 2px 5px 30px -5px black;
     width: 90%;
 }
+    input:focus {
+        outline: none;
+    }
 
 select {
     margin: 15px ;
@@ -132,6 +135,10 @@ select {
     box-shadow: 2px 5px 30px -5px black;
     width: 50%;
 }
+    select>option {
+        background-color: black;
+        color: white;
+    }
 
 .main>div {
     width: 95%;

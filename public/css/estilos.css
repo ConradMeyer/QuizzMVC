@@ -21,6 +21,7 @@ nav {
     }
     nav .admin {
         background-color: whitesmoke;
+        font-weight: bolder;
         margin: 15px;
         padding: 7px 14px;
         border-radius: 15px;

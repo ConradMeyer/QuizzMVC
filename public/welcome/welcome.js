@@ -281,7 +281,7 @@ function crearQuest() {
                 alert(data.data)
                 setTimeout(() => 
                 window.location.href = "http://localhost:8080/welcome/welcome.html",
-                1000)
+                500)
             })
 }
 
@@ -297,7 +297,7 @@ function editarQuest(quest, res1, res2, res3, res4, corr) {
         alert(data.data)
         setTimeout(() => 
             window.location.href = "http://localhost:8080/welcome/welcome.html",
-            1000)
+            500)
         })
 }
 
