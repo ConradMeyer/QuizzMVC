@@ -30,14 +30,25 @@ function read() {
     const options = { 
         method: 'GET',
         headers:{
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authentication': token
         }
       }
 
       fetch("/teacher/read", options)
-          .then(response => response.json())
-          .then(data => data.map(el => pintar(el)))
-          .catch(err => console.log(err))
+        .then(response => response.json())
+        .then (
+            data => {
+                if (data.status === 200) {
+                    data.data.map(el => pintar(el))
+                }
+                else {
+                    alert(data.data)
+                    window.location.href = "http://localhost:8080/login/login.html"
+                }
+            }
+        )
+        .catch(err => console.log(err))
 }
 
 function pintar(data) {

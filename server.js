@@ -91,27 +91,62 @@ server.post('/user/login', (req, res) => {
 // LEER TEACHER
 server.get('/teacher/read', (req, res) => {
     try {
-        MongoClient.connect(URL, (err, db)=> {
-            try {
-                db.db("quizz")
-                    .collection("quest")
-                    .find({}).toArray( (err, result) => {
-                        if (err) throw err;
-                        res.send(result);
-                        db.close();
-                    })
-            }
-            catch {
-                console.log("Error 1");
-            }
+        let decode = jwt.decode(req.headers.authentication);
+        if (decode.email){
+            MongoClient.connect(URL, (err, db)=> {
+                    db.db("quizz")
+                        .collection("teacher")
+                        .findOne({email: decode.email}, (err, result) => {
+                            try {
+                                let verify = jwt.verify(req.headers.authentication, result.secret)
+                                if (verify) {
+                                    try {
+                                        MongoClient.connect(URL, (err, db)=> {
+                                                db.db("quizz")
+                                                    .collection("quest")
+                                                    .find({}).toArray( (err, result) => {
+                                                        if (err) {
+                                                            console.log(err);
+                                                            console.log("ERROR");
+                                                        }
+                                                        else {
+                                                            res.status(200).json({
+                                                                status: 200,
+                                                                data: result,
+                                                                ok: true
+                                                            })
+                                                            db.close();
+                                                        }
+                                                    })
+                                        })
+                                    }
+                                    catch {
+                                        res.status(401).json({
+                                            data: "Algo va mal... No consigo conectar con MongoDB",
+                                            ok: false,
+                                        })
+                                    }
+                                }
+                            }
+                            catch {
+                                res.status(401).json({
+                                    data: "NO TIENES TOKEN CHAVAL",
+                                    ok: false,
+                                })
+                            }
+                        })
+            })
+        }
+    }
+    catch{
+        res.status(401).json({
+            data: "No tienes token chaval",
+            ok: false,
         })
-    } catch {
-        res.send("No se conecta")
-        console.log("no se conecta");
     }
 })
 
-// LEER USER
+// LEER USUARIO
 server.get('/user/read', (req, res) => {
     try {
         MongoClient.connect(URL, (err, db)=> {

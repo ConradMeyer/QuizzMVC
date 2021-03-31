@@ -103,7 +103,7 @@ function contar(){
 	document.querySelector("#evaluar").remove()
 	let caja = document.createElement("div")
 	caja.setAttribute("class", "resultado")
-	let cont = document.createTextNode(`Tu puntuación es de ${counter} sobre ${numP}`)
+	let cont = document.createTextNode(`¡Tu puntuación es de ${counter} sobre ${numP}!`)
 	let h3 = document.createElement("h3")
 	h3.appendChild(cont)
 	caja.appendChild(h3)
